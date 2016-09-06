@@ -66,6 +66,10 @@ set hidden
 set wildmenu
 set wildmode=list:longest
 set visualbell
+
+" Carriage return goes to next buffer
+nnoremap <CR> :wa<CR><C-^>
+
  
 " set ttyfast " Disable - slows down vim
 " set ruler " Disable - slows down vim
