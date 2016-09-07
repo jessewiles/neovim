@@ -174,7 +174,9 @@ let g:deoplete#enable_at_startup = 1
 " CtrlP
 nnoremap <leader>t :CtrlP<CR>
 nnoremap <leader>b :CtrlPBuffer<CR>
+nnoremap <leader>f :CtrlPClearCache<CR>
 let g:ctrlp_match_window = 'bottom,order:ttb,min:1,max:20,results:20'
+let g:ctrlp_switch_buffer = 0
 
 
 " Neomake
