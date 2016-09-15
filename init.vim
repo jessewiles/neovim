@@ -107,8 +107,8 @@ nnoremap <leader>k :nohlsearch<CR>
 " Make splits the same width
 nnoremap <leader>z <C-w>=
 
-" Open a vertically-split window, and focus on it
-nnoremap <leader>v <C-w>v<C-w>l
+" Open a vertically-split window
+nnoremap <leader>v <C-w>v
 
 "sudo vim <file> if vim <file> complains about permissions
 cnoremap w!! w !sudo tee % >/dev/null
@@ -177,12 +177,35 @@ nnoremap <leader>b :CtrlPBuffer<CR>
 nnoremap <leader>f :CtrlPClearCache<CR>
 let g:ctrlp_match_window = 'bottom,order:ttb,min:1,max:20,results:20'
 let g:ctrlp_switch_buffer = 0
+let g:ctrlp_cache_dir = '/home/jhuttner/.ctrlpcachedir'
+let g:ctrlp_clear_cache_on_exit = 0
+let g:ctrlp_use_caching = 1
+let g:ctrlp_match_current_file = 1
 
 
 " Neomake
-let g:neomake_python_enabled_makers = ['flake8']
-let g:neomake_python_flake8_maker = { 'args': ['--ignore=E111,E114,E266'], }
-let g:neomake_python_pep8_maker = { 'args': ['--max-line-length=80', '--ignore=E111,E114,E266'], }
+let search=system('/usr/local/adnxs/appnexus-developer-utils/current/find_up tox.ini')
+if !v:shell_error
+  let g:tox_ini_exists=1
+else
+  let g:tox_ini_exists=0
+endif
+
+if g:tox_ini_exists == 1
+  let g:neomake_python_enabled_makers = ['flake8']
+else
+  let g:neomake_python_enabled_makers = []
+endif
+
+function! s:lint()
+  if g:tox_ini_exists == 1
+	echo g:neomake_python_enabled_makers
+  else
+	echo 'Linting is disabled'
+  endif
+endfunction
+command! -nargs=0 -bar Lint call s:lint()
+
 
 augroup filetype
   au BufRead,BufWritePost *.py Neomake
