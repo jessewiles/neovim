@@ -199,9 +199,9 @@ endif
 
 function! s:lint()
   if g:tox_ini_exists == 1
-	echo g:neomake_python_enabled_makers
+    echo g:neomake_python_enabled_makers
   else
-	echo 'Linting is disabled'
+    echo 'Linting is disabled'
   endif
 endfunction
 command! -nargs=0 -bar Lint call s:lint()
