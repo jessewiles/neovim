@@ -205,6 +205,7 @@ function! s:lint()
   endif
 endfunction
 command! -nargs=0 -bar Lint call s:lint()
+autocmd VimEnter * silent !/usr/local/adnxs/appnexus-developer-utils/setup_pre_commit_linter
 
 
 augroup filetype
