@@ -125,7 +125,7 @@ nnoremap r <C-Y>
 " Smooth scroll down one line
 "nnoremap f <C-E>
 
-set directory=/home/jhuttner/.swp
+set directory=/home/vagrant/.swp
 
 " For Postgres comments
 autocmd FileType sql setlocal commentstring=--\ %s
@@ -177,14 +177,14 @@ nnoremap <leader>b :CtrlPBuffer<CR>
 nnoremap <leader>f :CtrlPClearCache<CR>
 let g:ctrlp_match_window = 'bottom,order:ttb,min:1,max:20,results:20'
 let g:ctrlp_switch_buffer = 0
-let g:ctrlp_cache_dir = '/home/jhuttner/.ctrlpcachedir'
+let g:ctrlp_cache_dir = '/home/vagrant/.ctrlpcachedir'
 let g:ctrlp_clear_cache_on_exit = 0
 let g:ctrlp_use_caching = 1
 let g:ctrlp_match_current_file = 1
 
 
 " Neomake
-let search=system('/usr/local/adnxs/appnexus-developer-utils/current/find_up tox.ini')
+let search=system('/home/vagrant/bin/find_up tox.ini')
 if !v:shell_error
   let g:tox_ini_exists=1
 else
@@ -205,7 +205,7 @@ function! s:lint()
   endif
 endfunction
 command! -nargs=0 -bar Lint call s:lint()
-autocmd VimEnter * silent !/usr/local/adnxs/appnexus-developer-utils/current/setup_pre_commit_linter
+"autocmd VimEnter * silent !/home/vagrant/bin/setup_pre_commit_linter
 
 
 augroup filetype
