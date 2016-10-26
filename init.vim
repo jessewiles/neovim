@@ -1,6 +1,8 @@
 execute pathogen#infect()
 syntax on
 
+set runtimepath^=~/.config/nvim/bundle/ctrlp.vim
+
 set wildignore+=*Zend*,.git,*.pyc,*bundles*,*jpgraph*,*Smarty*
 set wildignore+=*smarty*,django_test*,backups/2010*,images*
 set wildignore+=graphs*,*amcharts*,.csv,*un~*,*swp*,library/adodb*
