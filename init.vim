@@ -1,7 +1,7 @@
 execute pathogen#infect()
 syntax on
 
-set runtimepath^=~/.config/nvim/bundle/ctrlp.vim
+set runtimepath+=~/.config/nvim/bundle/ctrlp.vim
 
 set wildignore+=*Zend*,.git,*.pyc,*bundles*,*jpgraph*,*Smarty*
 set wildignore+=*smarty*,django_test*,backups/2010*,images*
@@ -13,7 +13,7 @@ let mapleader = ","
 filetype plugin indent on
 set colorcolumn=81,101
 
-highlight ColorColumn ctermbg=black
+highlight ColorColumn ctermbg=darkgrey guibg=darkgrey
 set modelines=20
 
 map <ESC>[1;5A <C-Up>
@@ -33,6 +33,10 @@ augroup filetype
   au! BufRead,BufNewFile *.yml set syntax=off
   au BufNewFile,BufRead .tmux.conf*,tmux.conf*,tmux.* setf tmux
 augroup END
+
+au FileType python setl sw=4 sts=4 et
+au FileType html setl sw=4 sts=4 et
+au FileType js setl sw=4 sts=4 et
 
 " Got te end of yanked block after yank
 au FileType * vmap y y`]
@@ -150,6 +154,7 @@ set modeline            " Enable modeline.
 set esckeys             " Cursor keys in insert mode.
 set linespace=0         " Set line-spacing to minimum.
 set nojoinspaces        " Prevents inserting two spaces after punctuation on a join (J)
+set cursorline
 
 
 " More natural splits
